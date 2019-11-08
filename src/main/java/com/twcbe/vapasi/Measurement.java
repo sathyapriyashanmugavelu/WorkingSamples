@@ -1,7 +1,7 @@
 package com.twcbe.vapasi;
 
 class Measurement {
-    private int size;
+    public final int size;
     private Unit unit;
     public static final String CENTIMETER = "cm";
 
@@ -12,10 +12,13 @@ class Measurement {
 
     @Override
     public boolean equals(Object obj) {
-
+        if(obj == null || obj.equals("") || !(obj instanceof Measurement)){
+            return false;
+        }
         Measurement that = (Measurement) obj;
         int thisConvertedSize = this.size;
         int thatConvertedSize = that.size;
+
 
         if(this.unit == that.unit){
             return thisConvertedSize == thatConvertedSize;

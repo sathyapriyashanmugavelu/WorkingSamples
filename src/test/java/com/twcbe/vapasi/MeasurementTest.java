@@ -49,4 +49,23 @@ public class MeasurementTest {
         boolean result = oneCm.equals(twoMeter);
         assertFalse(result);
     }
+    @Test
+    void shouldBeNotEqualWhenOneObjectIsEmpty() {
+        Measurement oneCm = new Measurement(1, Unit.METER);
+        //Measurement twoMeter = new Measurement(2, Unit.CENTIMETER);
+        assertNotEquals(oneCm,"");
+    }
+    @Test
+    void shouldBeNotEqualWhenOneObjectNull() {
+        Measurement oneCm = new Measurement(1, Unit.METER);
+        //Measurement twoMeter = new Measurement(2, Unit.CENTIMETER);
+        assertNotEquals(oneCm,null);
+    }
+    @Test
+    void shouldBeNotEqualWhenOneObjectIsDifferent() {
+        Measurement oneCm = new Measurement(1, Unit.METER);
+        //Measurement twoMeter = new Measurement(2, Unit.CENTIMETER);
+        assertNotEquals(oneCm,"hello");
+    }
+
 }
