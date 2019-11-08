@@ -9,7 +9,7 @@ public class MeasurementTest {
     void shouldBeEqualWhenSizesAre1cmAnd1cm() {
         Measurement firstInput=new Measurement(1,"cm");
         Measurement secondInput=new Measurement(1,"cm");
-        boolean result= firstInput.equality(secondInput);
+        boolean result= firstInput.equals(secondInput);
         assertTrue(result);
     }
 }

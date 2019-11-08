@@ -9,8 +9,10 @@ class Measurement {
         this.unit=unit;
     }
 
-    boolean equality(Measurement secondInput) {
-       return false;
+    @Override
+    public boolean equals(Object obj) {
+        Measurement that=(Measurement) obj;
+        return that.size == this.size;
     }
 
 }
