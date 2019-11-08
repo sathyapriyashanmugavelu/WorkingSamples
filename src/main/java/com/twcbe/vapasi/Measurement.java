@@ -2,9 +2,10 @@ package com.twcbe.vapasi;
 
 class Measurement {
     private int size;
-    private String unit;
+    private Unit unit;
+    public static final String CENTIMETER="cm";
 
-    Measurement(int size,String unit){
+    Measurement(int size, Unit unit){
         this.size=size;
         this.unit=unit;
     }
