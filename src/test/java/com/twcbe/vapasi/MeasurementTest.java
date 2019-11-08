@@ -23,16 +23,29 @@ public class MeasurementTest {
     }
 
     @Test
-    void shouldBeEqualWhenUnitsAreInCm() {
-        Measurement oneCm = new Measurement(1, Unit.CENTIMETER);
-        Measurement twoCm = new Measurement(1, Unit.CENTIMETER);
+    void shouldBeEqualWhenUnitsAndSizeAreSame() {
+        Measurement oneCm = new Measurement(1, Unit.METER);
+        Measurement twoCm = new Measurement(1, Unit.METER);
         assertEquals(oneCm, twoCm);
     }
-
     @Test
     void shouldBeNotEqualWhenUnitsAreInCmAndM() {
         Measurement oneCm = new Measurement(1, Unit.CENTIMETER);
         Measurement twoMeter = new Measurement(1, Unit.METER);
+        boolean result = oneCm.equals(twoMeter);
+        assertFalse(result);
+    }
+    @Test
+    void shouldBeEqualWhenUnitsIs100CmAnd1m() {
+        Measurement oneCm = new Measurement(100, Unit.CENTIMETER);
+        Measurement twoMeter = new Measurement(1, Unit.METER);
+        boolean result = oneCm.equals(twoMeter);
+        assertTrue(result);
+    }
+    @Test
+    void shouldBeNotEqualWhenValuesAre1MAnd2Cm() {
+        Measurement oneCm = new Measurement(1, Unit.METER);
+        Measurement twoMeter = new Measurement(2, Unit.CENTIMETER);
         boolean result = oneCm.equals(twoMeter);
         assertFalse(result);
     }

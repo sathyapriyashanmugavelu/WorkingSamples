@@ -12,13 +12,21 @@ class Measurement {
 
     @Override
     public boolean equals(Object obj) {
+
         Measurement that = (Measurement) obj;
-        if (that.unit == this.unit) {
-            if (that.size == this.size) {
-                return true;
-            }
+        int thisConvertedSize = this.size;
+        int thatConvertedSize = that.size;
+
+        if(this.unit == that.unit){
+            return thisConvertedSize == thatConvertedSize;
         }
-        return false;
+        if(this.unit == Unit.METER){
+            thisConvertedSize = this.size * 100;
+        }
+        if(that.unit == unit.METER){
+            thatConvertedSize = that.size * 100;
+        }
+        return thisConvertedSize == thatConvertedSize;
     }
 
 }
