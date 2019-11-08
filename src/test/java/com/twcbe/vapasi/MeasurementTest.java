@@ -20,4 +20,11 @@ public class MeasurementTest {
         boolean result = firstInput.equals(secondInput);
         assertFalse(result);
     }
+
+    @Test
+    void shouldBeEqualWhenUnitsAreInCm() {
+        Measurement firstInput=new Measurement(1, Unit.CENTIMETER);
+        Measurement secondInput=new Measurement(1, Unit.CENTIMETER);
+        assertEquals(firstInput, secondInput);
+    }
 }
