@@ -3,41 +3,43 @@ package com.twcbe.vapasi;
 import java.util.Objects;
 
 class Measurement {
-    public final int size;
-    private Unit unit;
-    public static final String CENTIMETER = "cm";
 
-    Measurement(int size, Unit unit) {
-        this.size = size;
+    public final int magnitude;
+    private final Unit unit;
+    public static final int centimeterConstant =100;
+
+    Measurement(int magnitude, Unit unit) {
+        this.magnitude = magnitude;
         this.unit = unit;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || obj.equals("") || !(obj instanceof Measurement)) {
+        if (obj == null){
             return false;
         }
-
+        if(!(obj instanceof Measurement)) {
+            return false;
+        }
         Measurement that = (Measurement) obj;
-        int thisConvertedSize = this.size;
-        int thatConvertedSize = that.size;
+        return that.toCentimeter() == this.toCentimeter();
 
-
-        if (this.unit == that.unit) {
-            return thisConvertedSize == thatConvertedSize;
-        }
-        if (this.unit == Unit.METER) {
-            thisConvertedSize = this.size * 100;
-        }
-        if (that.unit == unit.METER) {
-            thatConvertedSize = that.size * 100;
-        }
-        return thisConvertedSize == thatConvertedSize;
     }
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(size, unit);
+        int thisValue = this.magnitude;
+        if (this.unit == Unit.METER)
+        {
+            return toCentimeter();
+        }
+        return thisValue;
+    }
+
+
+    public int toCentimeter(){
+        return unit.convert(magnitude);
     }
 
 }
