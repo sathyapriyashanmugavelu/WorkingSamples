@@ -1,7 +1,6 @@
 package com.twcbe.vapasi;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -63,7 +62,6 @@ public class MeasurementTest {
     @Test
     void shouldBeNotEqualWhenOneObjectNull() {
         Measurement oneCm = new Measurement(1, Unit.METER);
-        //Measurement twoMeter = new Measurement(2, Unit.CENTIMETER);
         assertNotEquals(oneCm, null);
     }
 
@@ -79,12 +77,11 @@ public class MeasurementTest {
         Measurement twoM = new Measurement(1, Unit.METER);
         assertEquals(oneM.hashCode(), twoM.hashCode());
     }
+
     @Test
     void shouldBeEqualWhenObjectsHashcodesAreNotSame() {
         Measurement oneM = new Measurement(100, Unit.CENTIMETER);
         Measurement twoM = new Measurement(1, Unit.METER);
         assertEquals(oneM.hashCode(), twoM.hashCode());
     }
-
-
 }

@@ -1,12 +1,9 @@
 package com.twcbe.vapasi;
 
-import java.util.Objects;
-
 class Measurement {
 
     public final int magnitude;
     private final Unit unit;
-    public static final int centimeterConstant =100;
 
     Measurement(int magnitude, Unit unit) {
         this.magnitude = magnitude;
@@ -15,10 +12,10 @@ class Measurement {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null){
+        if (obj == null) {
             return false;
         }
-        if(!(obj instanceof Measurement)) {
+        if (!(obj instanceof Measurement)) {
             return false;
         }
         Measurement that = (Measurement) obj;
@@ -26,22 +23,18 @@ class Measurement {
 
     }
 
-
     @Override
     public int hashCode() {
         int thisValue = this.magnitude;
-        if (this.unit == Unit.METER)
-        {
+        if (this.unit == Unit.METER) {
             return toCentimeter();
         }
         return thisValue;
     }
 
-
-    public int toCentimeter(){
+    public int toCentimeter() {
         return unit.convert(magnitude);
     }
-
 }
 
 
