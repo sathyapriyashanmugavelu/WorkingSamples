@@ -35,6 +35,10 @@ class Measurement {
     public int toCentimeter() {
         return unit.convert(magnitude);
     }
+
+    public int add(Measurement anotherCm) {
+        return this.magnitude+anotherCm.magnitude;
+    }
 }
 
 

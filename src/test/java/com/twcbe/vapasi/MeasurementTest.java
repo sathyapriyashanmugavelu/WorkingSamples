@@ -84,4 +84,11 @@ public class MeasurementTest {
         Measurement twoM = new Measurement(1, Unit.METER);
         assertEquals(oneM.hashCode(), twoM.hashCode());
     }
+
+    @Test
+    void shouldAdditionBeEqualWhenUnitsAreSame() {
+        Measurement oneCm = new Measurement(2, Unit.CENTIMETER);
+        Measurement anotherCm = new Measurement(2, Unit.CENTIMETER);
+        assertEquals(4,oneCm.add(anotherCm));
+    }
 }
