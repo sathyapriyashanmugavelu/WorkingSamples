@@ -1,6 +1,7 @@
 package com.twcbe.vapasi;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -89,6 +90,23 @@ public class MeasurementTest {
     void shouldAdditionBeEqualWhenUnitsAreSame() {
         Measurement oneCm = new Measurement(2, Unit.CENTIMETER);
         Measurement anotherCm = new Measurement(2, Unit.CENTIMETER);
-        assertEquals(4,oneCm.add(anotherCm));
+        Measurement resultCm = new Measurement(4, Unit.CENTIMETER);
+        assertEquals(resultCm, oneCm.add(anotherCm));
+    }
+
+    @Test
+    void shouldAdditionBeEqualWhenUnitsAreDifferentWithCmAsFirstUnit() {
+        Measurement oneCm = new Measurement(100, Unit.CENTIMETER);
+        Measurement anotherCm = new Measurement(1, Unit.METER);
+        Measurement resultCm = new Measurement(200, Unit.CENTIMETER);
+        assertEquals(resultCm, oneCm.add(anotherCm));
+    }
+
+    @Test
+    void shouldAdditionBeEqualWhenUnitsAreDifferentWithMAsFirstUnit() {
+        Measurement oneCm = new Measurement(1, Unit.METER);
+        Measurement anotherCm = new Measurement(100, Unit.CENTIMETER);
+        Measurement resultM = new Measurement(2, Unit.METER);
+        assertEquals(resultM, oneCm.add(anotherCm));
     }
 }

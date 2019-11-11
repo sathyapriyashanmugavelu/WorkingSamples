@@ -20,7 +20,6 @@ class Measurement {
         }
         Measurement that = (Measurement) obj;
         return that.toCentimeter() == this.toCentimeter();
-
     }
 
     @Override
@@ -36,8 +35,16 @@ class Measurement {
         return unit.convert(magnitude);
     }
 
-    public int add(Measurement anotherCm) {
-        return this.magnitude+anotherCm.magnitude;
+    public Measurement add(Measurement anotherCm) {
+        Measurement result;
+        if (equals(anotherCm)) {
+            int addResult = this.magnitude + toCentimeter();
+            if (this.unit != Unit.CENTIMETER) {
+                return new Measurement(this.magnitude + unit.convertToAnyUnit(anotherCm.magnitude), this.unit);
+            }
+            return new Measurement(addResult, this.unit);
+        }
+        return new Measurement(0, Unit.CENTIMETER);
     }
 }
 
