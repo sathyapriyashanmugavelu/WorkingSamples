@@ -55,15 +55,14 @@ public class MeasurementTest {
 
     @Test
     void shouldBeNotEqualWhenOneObjectIsEmpty() {
-        Measurement oneCm = new Measurement(1, Unit.METER);
-        //Measurement twoMeter = new Measurement(2, Unit.CENTIMETER);
-        assertNotEquals(oneCm, "");
+        Measurement oneM = new Measurement(1, Unit.METER);
+        assertNotEquals(oneM, "");
     }
 
     @Test
     void shouldBeNotEqualWhenOneObjectNull() {
-        Measurement oneCm = new Measurement(1, Unit.METER);
-        assertNotEquals(oneCm, null);
+        Measurement oneM = new Measurement(1, Unit.METER);
+        assertNotEquals(oneM, null);
     }
 
     @Test
@@ -81,9 +80,9 @@ public class MeasurementTest {
 
     @Test
     void shouldBeEqualWhenObjectsHashcodesAreNotSame() {
-        Measurement oneM = new Measurement(100, Unit.CENTIMETER);
+        Measurement oneCm = new Measurement(100, Unit.CENTIMETER);
         Measurement twoM = new Measurement(1, Unit.METER);
-        assertEquals(oneM.hashCode(), twoM.hashCode());
+        assertEquals(oneCm.hashCode(), twoM.hashCode());
     }
 
     @Test
@@ -97,16 +96,24 @@ public class MeasurementTest {
     @Test
     void shouldAdditionBeEqualWhenUnitsAreDifferentWithCmAsFirstUnit() {
         Measurement oneCm = new Measurement(100, Unit.CENTIMETER);
-        Measurement anotherCm = new Measurement(1, Unit.METER);
+        Measurement anotherM = new Measurement(1, Unit.METER);
         Measurement resultCm = new Measurement(200, Unit.CENTIMETER);
-        assertEquals(resultCm, oneCm.add(anotherCm));
+        assertEquals(resultCm, oneCm.add(anotherM));
     }
 
     @Test
     void shouldAdditionBeEqualWhenUnitsAreDifferentWithMAsFirstUnit() {
-        Measurement oneCm = new Measurement(1, Unit.METER);
+        Measurement oneM = new Measurement(1, Unit.METER);
         Measurement anotherCm = new Measurement(100, Unit.CENTIMETER);
         Measurement resultM = new Measurement(2, Unit.METER);
-        assertEquals(resultM, oneCm.add(anotherCm));
+        assertEquals(resultM, oneM.add(anotherCm));
+    }
+
+    @Test
+    void shouldAdditionBeEqualWhenUnitsAreDifferentWithKmAsFirstUnit() {
+        Measurement oneKm = new Measurement(1, Unit.KILOMETER);
+        Measurement anotherCm = new Measurement(1000, Unit.CENTIMETER);
+        Measurement resultKm = new Measurement(2, Unit.KILOMETER);
+        assertEquals(resultKm, oneKm.add(anotherCm));
     }
 }
