@@ -35,14 +35,14 @@ class Measurement {
         return unit.convert(magnitude);
     }
 
+    public int toAnyUnit() {
+        return unit.convertToAnyUnit(toCentimeter());
+    }
+
     public Measurement add(Measurement anotherCm) {
         Measurement result;
         if (equals(anotherCm)) {
-            int addResult = this.magnitude + toCentimeter();
-            if (this.unit != Unit.CENTIMETER) {
-                return new Measurement(this.magnitude + unit.convertToAnyUnit(anotherCm.magnitude), this.unit);
-            }
-            return new Measurement(addResult, this.unit);
+            return new Measurement(this.magnitude + toAnyUnit(), this.unit);
         }
         return new Measurement(0, Unit.CENTIMETER);
     }

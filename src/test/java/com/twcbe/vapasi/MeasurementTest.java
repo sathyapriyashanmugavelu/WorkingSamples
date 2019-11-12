@@ -112,8 +112,16 @@ public class MeasurementTest {
     @Test
     void shouldAdditionBeEqualWhenUnitsAreDifferentWithKmAsFirstUnit() {
         Measurement oneKm = new Measurement(1, Unit.KILOMETER);
-        Measurement anotherCm = new Measurement(1000, Unit.CENTIMETER);
+        Measurement anotherCm = new Measurement(100000, Unit.CENTIMETER);
         Measurement resultKm = new Measurement(2, Unit.KILOMETER);
         assertEquals(resultKm, oneKm.add(anotherCm));
+    }
+
+    @Test
+    void shouldAdditionBeEqualWhenUnitsAreDifferentWithKmAsFirstUnitAndMAsSecondUnit() {
+        Measurement oneKm = new Measurement(1, Unit.KILOMETER);
+        Measurement anotherM = new Measurement(1000, Unit.METER);
+        Measurement resultKm = new Measurement(2, Unit.KILOMETER);
+        assertEquals(resultKm, oneKm.add(anotherM));
     }
 }

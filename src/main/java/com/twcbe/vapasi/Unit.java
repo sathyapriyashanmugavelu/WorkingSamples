@@ -1,7 +1,7 @@
 package com.twcbe.vapasi;
 
 public enum Unit {
-    CENTIMETER(1), METER(100), KILOMETER(1000);
+    CENTIMETER(1), METER(100), KILOMETER(100000);
 
     private final int conversionFactor;
     int resultValue;
